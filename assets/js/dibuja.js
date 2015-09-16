@@ -28,7 +28,7 @@ function initCanvas(){
 	context = canvas.getContext("2d");
 }
 function repinta(){
-	context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
+	clearCanvas();
 
 	context.strokeStyle = "#df4b26";
 	context.lineJoin = "round";
@@ -56,9 +56,16 @@ function addMovimiento(x, y, dragging)
 	clickColor.push(curColor);
 }
 
-function reset_click(){
+function resetMovimiento(){
 	clickX = new Array();
 	clickY = new Array();
 	clickDrag = new Array();
 	clickColor = new Array();
+}
+
+function clearCanvas()
+{
+	context.fillStyle = '#ffffff';
+	context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+	canvas.width = canvas.width;
 }
