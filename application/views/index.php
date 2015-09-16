@@ -1,26 +1,3 @@
-<div class="navbar navbar-default navbar-fixed-top">
-	<div class="container">
-		<div class="navbar-header">
-			<a href="site" class="navbar-brand">
-				<img src="<?=base_url().IMG;?>logo_completo.png" alt="logo dibujalo" width="130" height="30" class="img-responsive">
-			</a>
-			<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-		</div>
-		<div class="navbar-collapse collapse" id="navbar-main">
-			<ul class="nav navbar-nav">
-				<li><a href="https://facebook.com/kronusteam" target="_blank">Facebook</a></li>
-				<li><a href="https://twitter.com/kronusteam" target="_blank">Twitter</a></li>
-				<li><a href="site/gallery">Galeria</a></li>
-			</ul>
-		</div>
-	</div>
-</div>
-
-
 <div class="container">
 	<div class="container" id="divMain">
 		<div class="page-header" id="banner">
@@ -41,11 +18,13 @@
 			<div class="col-xs-12 col-md-4">
 				<div class="pie degree">
 					<span class="block"></span>
-					<span id="time">45</span>
+					<span id="time">10</span>
 				</div>
 			</div>
 			<div class="col-xs-12 col-md-4">
-				<div id="canvasDiv" class="img-thumbnail img-responsive"></div>
+				<div id="canvasDiv" class="img-thumbnail img-responsive">
+				
+				</div>
 			</div>
 		</div>
 		<!-- FIN ZONA DIBUJO -->

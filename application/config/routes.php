@@ -52,3 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'site';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = TRUE;
+
+$route['upload-image'] = 'site/upload_image';
+$route['get-image'] = 'site/getRndImage';
+$route['404_override'] = 'errors/page_missing';

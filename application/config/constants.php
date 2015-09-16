@@ -27,7 +27,6 @@ define('DIR_WRITE_MODE', 0755);
 | These modes are used when working with fopen()/popen()
 |
 */
-
 define('FOPEN_READ', 'rb');
 define('FOPEN_READ_WRITE', 'r+b');
 define('FOPEN_WRITE_CREATE_DESTRUCTIVE', 'wb'); // truncates existing file data, use with care
@@ -85,8 +84,8 @@ define('EXIT_DATABASE', 8); // database error
 define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
+define('JS', 'assets/js/');
 define('CSS', 'assets/css/');
 define('IMG', 'assets/img/');
-define('JS', 'assets/js/');
-define('PLUGIN', 'assets/plugin/');
-define('BOOTSTRAP', 'assets/bootstrap/');
+define('BOOTSTRAP', 'vendor/twbs/bootstrap/dist/');
+define('JQUERY', 'vendor/components/jquery/');

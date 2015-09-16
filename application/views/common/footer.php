@@ -1,4 +1,4 @@
-  <script src="<?=base_url().JS;?>jquery-1.10.2.min.js"></script>
+  <script src="<?=base_url().JQUERY;?>jquery.min.js"></script>
   <script src="<?=base_url().BOOTSTRAP;?>js/bootstrap.min.js"></script>
   <?php
   if(isset($include_plugin)){

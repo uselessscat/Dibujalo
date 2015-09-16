@@ -17,3 +17,4 @@
 	?>
 </head>
 <body>
+<?=$this->load->view('common/menu',null,true);?>
