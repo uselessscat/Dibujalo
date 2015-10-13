@@ -13,7 +13,6 @@ $(document).ready(function(e) {
 		pulsado = true;
 		addMovimiento(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
 		//repinta();
-		console.log(context);
 	});
 
 	$(document).on('mousemove', '#canvas', function(e){
@@ -59,6 +58,7 @@ function comenzarDibujo(){
 	initCanvas();
 	comenzar();
 }
+
 function reiniciarDibujo(){
 	terminarReloj();
 	
@@ -72,7 +72,7 @@ function reiniciarDibujo(){
 	$("#btnReiniciar").hide();
 	
 	$("#time").html("30");
-	reset_click();
+	resetMovimiento();
 	$("#canvasDiv").html("");	
 }
 

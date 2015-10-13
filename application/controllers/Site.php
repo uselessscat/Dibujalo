@@ -6,7 +6,7 @@ class Site extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Images_model','imagenes');
-		$this->load->model('Userimages_model','userImage');
+		$this->load->model('UserImages_model','userImage');
 	}
 	public function index()
 	{
