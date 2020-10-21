@@ -12,7 +12,7 @@
 		<div class="row">
 			<div class="col-xs-12 col-md-4">
 				<div id="imagenPokemon" class="img-thumbnail">
-					<img src="<?=base_url().IMG;?>logo.png" alt="logo" class="img-responsive" id="imgDibujo" data-id="2">
+					<img src="<?= base_url() . IMG; ?>logo.png" alt="logo" class="img-responsive" id="imgDibujo" data-id="2">
 				</div>
 			</div>
 			<div class="col-xs-12 col-md-4">
@@ -23,7 +23,7 @@
 			</div>
 			<div class="col-xs-12 col-md-4">
 				<div id="canvasDiv" class="img-thumbnail img-responsive">
-				
+
 				</div>
 			</div>
 		</div>
@@ -37,9 +37,9 @@
 		<div class="row">
 			<div class="col-xs-12 text-center">
 				<marquee behavior="2" direction="left">
-					<?php if (isset($images)): ?>
-						<?php foreach ($images as $image): ?>
-							<img src="<?=base_url().IMG;?>users/<?=$image->ruta; ?>" width="100px" height="100px" class="img-thumbnail img-responsive"/>	
+					<?php if (isset($images)) : ?>
+						<?php foreach ($images as $image) : ?>
+							<img src="<?= base_url() . IMG; ?>users/<?= $image->ruta; ?>" width="100px" height="100px" class="img-thumbnail img-responsive" />
 						<?php endforeach ?>
 					<?php endif ?>
 				</marquee>
@@ -54,4 +54,5 @@
 			</div>
 		</div>
 	</footer>
-</div><!--FIN container-->
+</div>
+<!--FIN container-->

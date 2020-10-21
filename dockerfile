@@ -1,6 +1,8 @@
 FROM php:7.4-apache
 
-ENV PROYECT_ROOT /var/www/src/
+ENV PROYECT_ROOT=/var/www/src/
+
+WORKDIR ${PROYECT_ROOT}
 
 # mbstring json mysqlnd xml
 RUN apt-get update && \

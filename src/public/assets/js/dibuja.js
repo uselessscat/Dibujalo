@@ -15,31 +15,31 @@ var colorBrown = "#986928";
 
 var curColor = colorPurple;
 
-function initCanvas(){
+function initCanvas() {
 	canvasDiv = document.getElementById('canvasDiv');
 	canvas = document.createElement('canvas');
 	canvas.setAttribute('width', 350);
 	canvas.setAttribute('height', 350);
 	canvas.setAttribute('id', 'canvas');
 	canvasDiv.appendChild(canvas);
-	if(typeof G_vmlCanvasManager != 'undefined') {
+	if (typeof G_vmlCanvasManager != 'undefined') {
 		canvas = G_vmlCanvasManager.initElement(canvas);
 	}
 	context = canvas.getContext("2d");
 }
-function repinta(){
+function repinta() {
 	clearCanvas();
 
 	context.strokeStyle = "#df4b26";
 	context.lineJoin = "round";
 	context.lineWidth = 5;
 
-	for(var i=0; i < clickX.length; i++) {		
+	for (var i = 0; i < clickX.length; i++) {
 		context.beginPath();
-		if(clickDrag[i] && i){
-			context.moveTo(clickX[i-1], clickY[i-1]);
-		}else{
-			context.moveTo(clickX[i]-1, clickY[i]);
+		if (clickDrag[i] && i) {
+			context.moveTo(clickX[i - 1], clickY[i - 1]);
+		} else {
+			context.moveTo(clickX[i] - 1, clickY[i]);
 		}
 		context.lineTo(clickX[i], clickY[i]);
 		context.closePath();
@@ -48,23 +48,21 @@ function repinta(){
 	}
 }
 
-function addMovimiento(x, y, dragging)
-{
+function addMovimiento(x, y, dragging) {
 	clickX.push(x);
 	clickY.push(y);
 	clickDrag.push(dragging);
 	clickColor.push(curColor);
 }
 
-function resetMovimiento(){
+function resetMovimiento() {
 	clickX = new Array();
 	clickY = new Array();
 	clickDrag = new Array();
 	clickColor = new Array();
 }
 
-function clearCanvas()
-{
+function clearCanvas() {
 	context.fillStyle = '#ffffff';
 	context.clearRect(0, 0, context.canvas.width, context.canvas.height);
 	canvas.width = canvas.width;
