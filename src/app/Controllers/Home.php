@@ -6,30 +6,32 @@ class Home extends BaseController
 {
     public function __construct()
     {
-        $this->load->model('Images_model', 'imagenes');
-        $this->load->model('UserImages_model', 'userImage');
+        // $this->load->model('Images_model', 'imagenes');
+        // $this->load->model('UserImages_model', 'userImage');
     }
 
     public function index()
     {
-        $includes['include_css'] = array('bootstrap.theme.css', 'cron.css', 'def.css');
+        $includes['include_css'] = array(
+            // 'bootstrap.theme.css',
+            'cron.css',
+            'def.css'
+        );
         $includes['include_js'] = array('dibuja.js', 'index.js');
 
-        $data['menu_activo'] = 'index';
-        $rs = $this->imagenes->getRndImage();
-        if ($rs->num_rows() > 0) {
-            $datosImagen = array(
-                'ruta' => $rs->row()->KT_RUTAIMAGEN,
-                'nombre' => $rs->row()->KT_NOMBREIMAGEN,
-                'id' => $rs->row()->KT_IDIMAGEN
-            );
+        //$rs = $this->imagenes->getRndImage();
+        //if ($rs->num_rows() > 0) {
+        //    $datosImagen = array(
+        //        'ruta' => $rs->row()->KT_RUTAIMAGEN,
+        //        'nombre' => $rs->row()->KT_NOMBREIMAGEN,
+        //        'id' => $rs->row()->KT_IDIMAGEN
+        //    );
+        //
+        //    $data['images'] = json_encode($datosImagen);
+        //}
+        //
 
-            $data['images'] = json_encode($datosImagen);
-        }
-
-        $this->load->view('common/header', $includes);
-        $this->load->view('index', $data);
-        $this->load->view('common/footer', $includes);
+        echo view('index', $includes);
     }
 
     public function gallery()
@@ -37,13 +39,7 @@ class Home extends BaseController
         $includes['include_css'] = array('bootstrap.theme.css', 'cron.css', 'def.css');
         $includes['include_js'] = array('index.js');
 
-        $this->load->view('common/header', $includes);
-        $this->load->view('index');
-        $this->load->view('common/footer', $includes);
-    }
-
-    public function getLastUsersImages()
-    {
+        echo view('index', $includes);
     }
 
     public function getRndImage()

@@ -1,55 +1,26 @@
-/*MODIFICACION BOOSTRAP*/
-body {
-	padding-top: 70px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+#canvas {
+    cursor: url(http://ani.cursors-4u.net/others/oth-9/oth838.cur), progress !important;
 }
-
-.navbar-fixed-top .nav {
-	padding: 15px 0;
+#imagenPokemon {
+    float: left;
+    width: 350px;
+    height: 350px;
+    background: #fff;
+    margin-left: 1em;
 }
-
-.navbar-fixed-top .navbar-brand {
-	padding: 0 15px;
+#imgDibujo {
+    width: 350px;
+    height: 350px;
 }
-
-@media(min-width:768px) {
-	body {
-		padding-top: 100px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
-	}
-
-	.navbar-fixed-top .navbar-brand {
-		padding: 0px 0;
-	}
+#canvasDiv {
+    float: left;
+    width: 350px;
+    height: 350px;
+    background: #fff;
+    margin-left: 1em;
 }
-.page-header {
-	padding-bottom: 9px;
-	margin: 0 0 20px;
-	border-bottom: 1px solid #eeeeee;
-}
-/*FIN MODIFICACION BOOSTRAP*/
-#canvas{
-	cursor: url(http://ani.cursors-4u.net/others/oth-9/oth838.cur), progress !important;
-}
-#imagenPokemon{
-	float:left;
-	width: 350px; 
-	height: 350px; 
-	background: #fff;
-	margin-left:1em;
-	
-}
-#imgDibujo{
-	width: 350px; 
-	height: 350px; 	
-}
-#canvasDiv{
-	float:left;
-	width: 350px; 
-	height: 350px; 
-	background: #fff;
-	margin-left:1em;
-}
-#botones{
-	margin-left:33em;
-	width: 600px; 
-	clear:both;
+#botones {
+    margin-left: 33em;
+    width: 600px;
+    clear: both;
 }

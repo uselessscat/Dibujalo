@@ -1,8 +1,14 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
 
-class Images extends CI_Model
+namespace App\Models;
+
+use CodeIgniter\Model;
+
+class Images extends Model
 {
+    protected $table = 'images';
+
+    protected $primaryKey = 'id';
 
     private $kt_IdImagen;
     private $kt_NombreImagen;
@@ -12,7 +18,6 @@ class Images extends CI_Model
     private $kt_Sec;
     private $kt_Estado;
 
-    private $tabla = 'ktimagenes';
 
     public function create($kt_NombreImagen, $kt_RutaImagen, $kt_Fecha, $kt_Cat, $kt_Sec, $kt_Estado = 1)
     {
@@ -31,7 +36,7 @@ class Images extends CI_Model
             'KT_SEC' => $this->kt_Sec,
             'KT_ESTADO' => $this->kt_Estado
         );
-        $rs = $this->db->insert($this->tabla, $data);
+        $rs = $this->db->insert($this->table, $data);
         $this->kt_IdImagen = $this->db->insert_id();
         return $rs;
     }
@@ -39,7 +44,7 @@ class Images extends CI_Model
     public function getRndImage()
     {
         $this->db->select('KT_IDIMAGEN,KT_NOMBREIMAGEN,KT_RUTAIMAGEN');
-        $this->db->from($this->tabla);
+        $this->db->from($this->table);
         $this->db->where('KT_ESTADO', 1);
         $this->db->order_by('RAND()');
         $this->db->limit(1);
@@ -112,13 +117,10 @@ class Images extends CI_Model
 
     public function getTabla()
     {
-        return $this->tabla;
+        return $this->table;
     }
     public function setTabla($tabla)
     {
-        $this->tabla = $tabla;
+        $this->table = $tabla;
     }
 }
-
-/* End of file Images_model.php */
-/* Location: ./application/models/Images_model.php */

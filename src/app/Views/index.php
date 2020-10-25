@@ -1,3 +1,7 @@
+<?= $this->extend('layouts/main') ?>
+
+<?= $this->section('content') ?>
+
 <div class="container">
 	<div class="container" id="divMain">
 		<div class="page-header" id="banner">
@@ -55,4 +59,5 @@
 		</div>
 	</footer>
 </div>
-<!--FIN container-->
+
+<?= $this->endSection() ?>
