@@ -14,7 +14,6 @@ jQuery.fn.extend({
 		}).html(content).appendTo('body');
 	},
 	uiUnlock: function(){
-
 		$('#uiLockId').remove();
 	},
 	goTop: function(selector,src){

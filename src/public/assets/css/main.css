@@ -1,0 +1,21 @@
+.counter-border {
+    border: 2px solid #bf3e11;
+}
+
+.counter-gradient {
+    --degrees: 360deg;
+    background-image: conic-gradient(
+        #bf3e11 0deg,
+        #bf3e11 var(--degrees),
+        #0000 var(--degrees),
+        #0000 0deg
+    );
+}
+
+#canvas {
+    cursor: url(http://ani.cursors-4u.net/others/oth-9/oth838.cur), progress !important;
+}
+
+.time {
+    font-size: 3em;
+}

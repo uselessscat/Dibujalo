@@ -4,7 +4,7 @@ var totaltime = 10;
 /*cronometro*/
 
 $(document).ready(function (e) {
-	$("#btnReiniciar").hide();
+	$('#btnReiniciar').hide();
 
 	$(document).on('mousedown', '#canvas', function (e) {
 		var mouseX = e.pageX - this.offsetLeft;
@@ -31,29 +31,31 @@ $(document).ready(function (e) {
 	});
 });
 
-
 function loadImageRandom() {
+	/*
 	$.ajax({
-		url: "get-image",
-		data: "1=1",
-		type: "POST",
+		url: 'get-image',
+		data: '1=1',
+		type: 'POST',
 		async: false,
-		dataType: "json",
+		dataType: 'json',
 		success: function (resp) {
 			if (resp.type === 'ok') {
-				$("#imgDibujo").prop("src", resp.ruta);
-				$("#imgDibujo").prop("alt", resp.nombre);
-				$("#imgDibujo").prop("title", resp.nombre);
-				$("#imgDibujo").prop("data-id", resp.id);
+				$('#imgDibujo').prop('src', resp.ruta);
+				$('#imgDibujo').prop('alt', resp.nombre);
+				$('#imgDibujo').prop('title', resp.nombre);
+				$('#imgDibujo').prop('data-id', resp.id);
 			}
 		}
 	});
+	*/
 }
 
 function comenzarDibujo() {
 	loadImageRandom();
-	$("#btnMostrar").hide();
-	$("#btnReiniciar").show();
+
+	$('#btnMostrar').hide();
+	$('#btnReiniciar').show();
 
 	initCanvas();
 	comenzar();
@@ -62,22 +64,25 @@ function comenzarDibujo() {
 function reiniciarDibujo() {
 	terminarReloj();
 
-	$("#imgDibujo").prop("src", "assets/img/logo.png");
-	$("#imgDibujo").prop("alt", "Logo Dibujalo");
-	$("#imgDibujo").prop("title", "Logo Dibujalo");
-	$("#imgDibujo").prop("data-id", "");
+	$('#imgDibujo').prop('src', 'assets/img/logo.png');
+	$('#imgDibujo').prop('alt', 'Logo Dibujalo');
+	$('#imgDibujo').prop('title', 'Logo Dibujalo');
+	$('#imgDibujo').prop('data-id', '');
 
-	$('.pie').css('background-image', '');
-	$("#btnMostrar").show();
-	$("#btnReiniciar").hide();
+	$('.counter-gradient').css('--degrees', '360deg');
+	$('#btnMostrar').show();
+	$('#btnReiniciar').hide();
 
-	$("#time").html("30");
+	$('#time').html('30');
+
 	resetMovimiento();
-	$("#canvasDiv").html("");
+	$('#canvasDiv').html('');
 }
 
 function upload() {
-	var rel = $("#imgDibujo").prop('data-id');
+	var rel = $('#imgDibujo')
+		.prop('data-id');
+
 	$.ajax({
 		url: 'upload-image',
 		data: {
@@ -91,7 +96,7 @@ function upload() {
 		},
 		success: function (resp) {
 			console.log(resp);
-			//window.location.href ="http://kronusteam.com/dibujalo/referido.php?base="+resp+"&rel="+rel+"/";
+			//window.location.href ='http://kronusteam.com/dibujalo/referido.php?base='+resp+'&rel='+rel+'/';
 		}
 	});
 }
@@ -99,10 +104,12 @@ function upload() {
 /********CRONOMETRO**********/
 function comenzar() {
 	var count = parseInt($('#time').text());
+
 	int = setInterval(function () {
 		count -= 1;
 		$('#time').html(count);
 		update(count);
+
 		if (count == 0) {
 			terminarReloj();
 			repinta();
@@ -116,17 +123,9 @@ function terminarReloj() {
 }
 
 function update(percent) {
-	var deg;
-	if (percent < (totaltime / 2)) {
-		deg = 90 + (360 * percent / totaltime);
-		$('.pie').css('background-image',
-			'linear-gradient(' + deg + 'deg, transparent 50%, white 50%),linear-gradient(90deg, white 50%, transparent 50%)'
-		);
-	} else if (percent >= (totaltime / 2)) {
-		deg = -90 + (360 * percent / totaltime);
-		$('.pie').css('background-image',
-			'linear-gradient(' + deg + 'deg, transparent 50%, #bf3e11 50%),linear-gradient(90deg, white 50%, transparent 50%)'
-		);
-	}
+	const deg = 360 * percent / totaltime;
+
+	$('.counter-gradient').css('--degrees', `${deg}deg`);
+
 }
 /*****FIN CRONOMETRO********/
