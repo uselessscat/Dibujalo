@@ -12,12 +12,11 @@ class Home extends BaseController
 
     public function index()
     {
-        $includes['include_css'] = array(
-            // 'bootstrap.theme.css',
-            'cron.css',
-            'def.css'
+        $includes['include_js'] = array(
+            'countdowntimer.js',
+            'dibuja.js',
+            'index.js'
         );
-        $includes['include_js'] = array('dibuja.js', 'index.js');
 
         //$rs = $this->imagenes->getRndImage();
         //if ($rs->num_rows() > 0) {

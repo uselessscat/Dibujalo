@@ -11,7 +11,6 @@
 	<!-- css imports -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
 
-	<link rel="stylesheet" type="text/css" href="<?= base_url() . '/' . CSS; ?>def.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url() . '/' . CSS; ?>main.css">
 
 	<!-- additional injected css files -->

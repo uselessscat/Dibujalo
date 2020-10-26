@@ -30,8 +30,8 @@
     </div>
     <div class="row mb-4">
         <div class="col-12 text-center">
-            <input id="btnMostrar" type="button" value="Comenzar" onClick="comenzarDibujo();" class="btn btn-primary btn-lg">
-            <input id="btnReiniciar" type="button" value="Reiniciar" onClick="reiniciarDibujo();" class="btn btn-primary btn-lg">
+            <input id="start-button" type="button" value="Comenzar" class="btn btn-primary btn-lg">
+            <input id="restart-button" type="button" value="Reiniciar" class="btn btn-primary btn-lg">
         </div>
     </div>
     <div class="row d-none">
