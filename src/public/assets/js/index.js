@@ -1,131 +1,114 @@
-/* cronometro*/
-var int;
-var totaltime = 10;
-/*cronometro*/
+class App {
+    constructor() {
+        this.countDownTimer = new CountDownTimer({
+            seconds: 10,
+            listeners: {
+                onChange: this.onTimerChange.bind(this),
+                onStop: this.onTimerStop.bind(this)
+            }
+        });
+
+        $('#btnReiniciar').hide();
+
+        this.addEventListeners();
+    }
+
+    addEventListeners() {
+        $('#start-button').click(this.onStart.bind(this));
+        $('#restart-button').click(this.onRestart.bind(this));
+
+        $(document).on('mousedown', '#canvas', function (e) {
+            var mouseX = e.pageX - this.offsetLeft;
+            var mouseY = e.pageY - this.offsetTop;
+
+            pulsado = true;
+            addMovimiento(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
+            //repinta();
+        });
+
+        $(document).on('mousemove', '#canvas', function (e) {
+            if (pulsado) {
+                addMovimiento(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
+                repinta();
+            }
+        });
+
+        $(document).on('mouseup', '#canvas', function (e) {
+            pulsado = false;
+        });
+
+        $(document).on('mouseleave', '#canvas', function (e) {
+            pulsado = false;
+        });
+    }
+
+    onStart() { // comenzarDibujo
+        // loadImageRandom();
+
+        $('#btnMostrar').hide();
+        $('#btnReiniciar').show();
+
+        //initCanvas();
+        this.countDownTimer.start();
+    }
+
+    onRestart() { // reiniciarDibujo
+        terminarReloj();
+
+        $('#imgDibujo').prop('src', 'assets/img/logo.png');
+        $('#imgDibujo').prop('alt', 'Logo Dibujalo');
+        $('#imgDibujo').prop('title', 'Logo Dibujalo');
+        $('#imgDibujo').prop('data-id', '');
+
+        $('.counter-gradient').css('--degrees', '360deg');
+        $('#btnMostrar').show();
+        $('#btnReiniciar').hide();
+
+        $('#time').html('30');
+
+        resetMovimiento();
+        $('#canvasDiv').html('');
+
+    }
+
+    onTimerChange(millisLeft) {
+        $('#time').html(Math.ceil(millisLeft / 1000));
+
+        const deg = 360 * millisLeft / this.countDownTimer.millis;
+
+        $('.counter-gradient').css('--degrees', `${deg}deg`);
+    }
+
+    onTimerStop() {
+        repinta();
+        //upload();
+    }
+}
+
+let app;
 
 $(document).ready(function (e) {
-	$('#btnReiniciar').hide();
-
-	$(document).on('mousedown', '#canvas', function (e) {
-		var mouseX = e.pageX - this.offsetLeft;
-		var mouseY = e.pageY - this.offsetTop;
-
-		pulsado = true;
-		addMovimiento(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
-		//repinta();
-	});
-
-	$(document).on('mousemove', '#canvas', function (e) {
-		if (pulsado) {
-			addMovimiento(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
-			repinta();
-		}
-	});
-
-	$(document).on('mouseup', '#canvas', function (e) {
-		pulsado = false;
-	});
-
-	$(document).on('mouseleave', '#canvas', function (e) {
-		pulsado = false;
-	});
+    app = new App();
 });
 
-function loadImageRandom() {
-	/*
-	$.ajax({
-		url: 'get-image',
-		data: '1=1',
-		type: 'POST',
-		async: false,
-		dataType: 'json',
-		success: function (resp) {
-			if (resp.type === 'ok') {
-				$('#imgDibujo').prop('src', resp.ruta);
-				$('#imgDibujo').prop('alt', resp.nombre);
-				$('#imgDibujo').prop('title', resp.nombre);
-				$('#imgDibujo').prop('data-id', resp.id);
-			}
-		}
-	});
-	*/
-}
-
-function comenzarDibujo() {
-	loadImageRandom();
-
-	$('#btnMostrar').hide();
-	$('#btnReiniciar').show();
-
-	initCanvas();
-	comenzar();
-}
-
-function reiniciarDibujo() {
-	terminarReloj();
-
-	$('#imgDibujo').prop('src', 'assets/img/logo.png');
-	$('#imgDibujo').prop('alt', 'Logo Dibujalo');
-	$('#imgDibujo').prop('title', 'Logo Dibujalo');
-	$('#imgDibujo').prop('data-id', '');
-
-	$('.counter-gradient').css('--degrees', '360deg');
-	$('#btnMostrar').show();
-	$('#btnReiniciar').hide();
-
-	$('#time').html('30');
-
-	resetMovimiento();
-	$('#canvasDiv').html('');
-}
-
 function upload() {
-	var rel = $('#imgDibujo')
-		.prop('data-id');
+    var rel = $('#imgDibujo')
+        .prop('data-id');
 
-	$.ajax({
-		url: 'upload-image',
-		data: {
-			rel: rel,
-			img: canvas.toDataURL('image/png')
-		},
-		type: 'POST',
-		async: false,
-		beforeSend: function (bf) {
+    $.ajax({
+        url: 'upload-image',
+        data: {
+            rel: rel,
+            img: canvas.toDataURL('image/png')
+        },
+        type: 'POST',
+        async: false,
+        beforeSend: function (bf) {
 
-		},
-		success: function (resp) {
-			console.log(resp);
-			//window.location.href ='http://kronusteam.com/dibujalo/referido.php?base='+resp+'&rel='+rel+'/';
-		}
-	});
+        },
+        success: function (resp) {
+            console.log(resp);
+            //window.location.href ='http://kronusteam.com/dibujalo/referido.php?base='+resp+'&rel='+rel+'/';
+        }
+    });
 }
-
-/********CRONOMETRO**********/
-function comenzar() {
-	var count = parseInt($('#time').text());
-
-	int = setInterval(function () {
-		count -= 1;
-		$('#time').html(count);
-		update(count);
-
-		if (count == 0) {
-			terminarReloj();
-			repinta();
-			//upload();
-		}
-	}, 1000);
-}
-
-function terminarReloj() {
-	int = window.clearInterval(int);
-}
-
-function update(percent) {
-	const deg = 360 * percent / totaltime;
-
-	$('.counter-gradient').css('--degrees', `${deg}deg`);
-
-}
-/*****FIN CRONOMETRO********/
